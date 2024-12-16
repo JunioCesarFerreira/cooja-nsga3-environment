@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE simulation SYSTEM "http://contiki.sourceforge.net/cooja/dtd/cooja.dtd">
+<simulation>
+  <title>Cenário 6x6 - Otimização Multiobjetivo</title>
+  <description>Simulação de uma rede 6x6 em um ambiente multiobjetivo com Contiki-NG.</description>
+  <randomseed>20240425</randomseed>
+  <motedelay_us>10000</motedelay_us>
+  <radiomedium>org.contikios.cooja.radiomediums.UDGM</radiomedium>
+  <modemsensitivity>-95</modemsensitivity>
+  <transmittingrange>30</transmittingrange>
+  <interferencerange>40</interferencerange>
+  <motetype>
+    <identifier>sky</identifier>
+    <description>Sensor Mote</description>
+    <source>/opt/contiki-ng/examples/rpl-border-router/border-router.c</source>
+    <commands>
+      <compile>make TARGET=cooja clean</compile>
+      <compile>make TARGET=cooja</compile>
+    </commands>
+  </motetype>
+  <motetype>
+    <identifier>sink</identifier>
+    <description>Nó Sink (Border Router)</description>
+    <source>/opt/contiki-ng/examples/rpl-border-router/border-router.c</source>
+    <commands>
+      <compile>make TARGET=cooja clean</compile>
+      <compile>make TARGET=cooja</compile>
+    </commands>
+  </motetype>
+  <motes>
+    <!-- Nó Sink -->
+    <mote>
+      <type>sink</type>
+      <position>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </position>
+    </mote>
+    <!-- Nós Sensores -->
+    <mote>
+      <type>sky</type>
+      <position>
+        <x>10</x>
+        <y>10</y>
+        <z>0</z>
+      </position>
+    </mote>
+    <mote>
+      <type>sky</type>
+      <position>
+        <x>20</x>
+        <y>10</y>
+        <z>0</z>
+      </position>
+    </mote>
+    <mote>
+      <type>sky</type>
+      <position>
+        <x>10</x>
+        <y>20</y>
+        <z>0</z>
+      </position>
+    </mote>
+    <!-- Adicione mais nós para completar a topologia 6x6 -->
+  </motes>
+  <events>
+    <event>
+      <time>900000</time> <!-- 15 minutos em milissegundos -->
+      <description>Encerrar a simulação</description>
+      <command>exit</command>
+    </event>
+  </events>
+</simulation>

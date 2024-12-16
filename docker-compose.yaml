@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  cooja:
+    build:
+      context: ./cooja
+    container_name: cooja_simulator
+    volumes:
+      - ./cooja/simulation:/opt/contiki-ng/metrica
+      - ./logs:/opt/contiki-ng/logs
+    ports:
+      - "60001:60001"
+      - "60002:60002"
+    depends_on:
+      - python
+
+  python:
+    build:
+      context: ./python
+    container_name: python_processor
+    volumes:
+      - ./python/scripts:/app/scripts
+      - ./logs:/app/logs
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=simuser
+      - MYSQL_PASSWORD=s1mpass
+      - MYSQL_DATABASE=simulation_data
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_database
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+    volumes:
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "3306:3306"
