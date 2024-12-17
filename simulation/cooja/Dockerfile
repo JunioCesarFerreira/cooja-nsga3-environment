@@ -16,12 +16,9 @@ RUN ./gradlew build --no-daemon --stacktrace --info
 WORKDIR /opt/contiki-ng/tools/cooja
 
 # Copiar o script de simulação
-COPY simulation/cenario_6x6_15min.xml /opt/contiki-ng/metrica/cenario_6x6_15min.csc
+COPY simulation/test.xml test.csc
 
 # Expor as portas necessárias (caso precise usá-las depois)
 EXPOSE 60001 60002
 
-# Definir o comando padrão como bash, assim quando rodar o contêiner interativamente você terá acesso ao shell
-CMD ["/bin/bash"]
-
-#ENTRYPOINT ["java", "-Xms4g", "-Xmx4g", "-jar", "build/libs/cooja.jar", "-nogui=/opt/contiki-ng/metrica/cenario_6x6_15min.csc", "-contiki=/opt/contiki-ng"]
+ENTRYPOINT ["java", "-Xms4g", "-Xmx4g", "-jar", "build/libs/cooja.jar", "-nogui=true", "test.csc"]
