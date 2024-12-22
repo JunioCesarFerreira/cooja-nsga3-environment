@@ -4,6 +4,11 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     git \
     wget \
+    software-properties-common \
+    binutils-msp430 \
+    gcc-msp430 \
+    msp430-libc \
+    mspdebug \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /opt
