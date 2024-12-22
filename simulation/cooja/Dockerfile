@@ -12,13 +12,11 @@ RUN git clone --recursive https://github.com/contiki-ng/contiki-ng.git
 WORKDIR /opt/contiki-ng/tools/cooja
 RUN ./gradlew build --no-daemon --stacktrace --info
 
-# Navegar para a pasta do Cooja
 WORKDIR /opt/contiki-ng/tools/cooja
 
-# Copiar o script de simulação
 COPY simulation/test.xml test.csc
 
-# Expor as portas necessárias (caso precise usá-las depois)
 EXPOSE 60001 60002
 
-ENTRYPOINT ["java", "-Xms4g", "-Xmx4g", "-jar", "build/libs/cooja.jar", "-nogui=true", "test.csc"]
+# Ponto de entrada
+ENTRYPOINT ["java", "-Xms4g", "-Xmx4g", "-jar", "build/libs/cooja.jar", "--no-gui", "test.csc"]
