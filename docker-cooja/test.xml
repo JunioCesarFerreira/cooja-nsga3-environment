@@ -20,13 +20,17 @@
     <events>
       <logoutput>40000</logoutput>
     </events>
+    <control>
+      <start>1</start> <!-- Inicia a simulação automaticamente -->
+      <stop>1000</stop> <!-- Para a simulação após 1000ms -->
+    </control>
     <motetype>
       se.sics.cooja.mspmote.SkyMoteType
       <identifier>sky1</identifier>
       <description>Sky Mote Type #sky1</description>
-      <source EXPORT="discard">[CONTIKI_DIR]/examples/hello-world/hello-world.c</source>
+      <source EXPORT="discard">/opt/contiki-ng/examples/hello-world/hello-world.c</source>
       <commands EXPORT="discard">make hello-world.sky TARGET=sky</commands>
-      <firmware EXPORT="copy">[CONTIKI_DIR]/examples/hello-world/hello-world.sky</firmware>
+      <firmware EXPORT="copy">/opt/contiki-ng/examples/hello-world/build/sky/hello-world.sky</firmware>
       <moteinterface>se.sics.cooja.interfaces.Position</moteinterface>
       <moteinterface>se.sics.cooja.interfaces.RimeAddress</moteinterface>
       <moteinterface>se.sics.cooja.interfaces.IPAddress</moteinterface>
@@ -57,76 +61,6 @@
       </interface_config>
       <motetype_identifier>sky1</motetype_identifier>
     </mote>
-    <mote>
-      <breakpoints />
-      <interface_config>
-        se.sics.cooja.interfaces.Position
-        <x>47.46430494377398</x>
-        <y>77.25734492495555</y>
-        <z>0.0</z>
-      </interface_config>
-      <interface_config>
-        se.sics.cooja.mspmote.interfaces.MspMoteID
-        <id>2</id>
-      </interface_config>
-      <motetype_identifier>sky1</motetype_identifier>
-    </mote>
-    <mote>
-      <breakpoints />
-      <interface_config>
-        se.sics.cooja.interfaces.Position
-        <x>27.801162060148354</x>
-        <y>21.340017641893873</y>
-        <z>0.0</z>
-      </interface_config>
-      <interface_config>
-        se.sics.cooja.mspmote.interfaces.MspMoteID
-        <id>3</id>
-      </interface_config>
-      <motetype_identifier>sky1</motetype_identifier>
-    </mote>
-    <mote>
-      <breakpoints />
-      <interface_config>
-        se.sics.cooja.interfaces.Position
-        <x>70.39216489393306</x>
-        <y>38.93042584076076</y>
-        <z>0.0</z>
-      </interface_config>
-      <interface_config>
-        se.sics.cooja.mspmote.interfaces.MspMoteID
-        <id>4</id>
-      </interface_config>
-      <motetype_identifier>sky1</motetype_identifier>
-    </mote>
-    <mote>
-      <breakpoints />
-      <interface_config>
-        se.sics.cooja.interfaces.Position
-        <x>90.44274139214416</x>
-        <y>32.62913873772849</y>
-        <z>0.0</z>
-      </interface_config>
-      <interface_config>
-        se.sics.cooja.mspmote.interfaces.MspMoteID
-        <id>5</id>
-      </interface_config>
-      <motetype_identifier>sky1</motetype_identifier>
-    </mote>
-    <mote>
-      <breakpoints />
-      <interface_config>
-        se.sics.cooja.interfaces.Position
-        <x>86.10897345525889</x>
-        <y>98.74457960052277</y>
-        <z>0.0</z>
-      </interface_config>
-      <interface_config>
-        se.sics.cooja.mspmote.interfaces.MspMoteID
-        <id>6</id>
-      </interface_config>
-      <motetype_identifier>sky1</motetype_identifier>
-    </mote>
   </simulation>
   <plugin>
     se.sics.cooja.plugins.SimControl
@@ -135,19 +69,6 @@
     <height>160</height>
     <location_x>400</location_x>
     <location_y>0</location_y>
-  </plugin>
-  <plugin>
-    se.sics.cooja.plugins.Visualizer
-    <plugin_config>
-      <moterelations>true</moterelations>
-      <skin>se.sics.cooja.plugins.skins.IDVisualizerSkin</skin>
-      <viewport>4.063655249590746 0.0 0.0 4.063655249590746 -46.2512294980049 -70.99120198956838</viewport>
-    </plugin_config>
-    <width>400</width>
-    <z>0</z>
-    <height>400</height>
-    <location_x>1</location_x>
-    <location_y>1</location_y>
   </plugin>
   <plugin>
     se.sics.cooja.plugins.LogListener
