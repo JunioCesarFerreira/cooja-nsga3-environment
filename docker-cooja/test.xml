@@ -66,28 +66,16 @@
       <script><![CDATA[
         log.log("Initializing simulation script\n");
 
-        // Inicia a simulação
-        sim.start();
-        log.log("Simulation started\n");
-
-        // Aguarda até que o tempo da simulação atinja 10 segundos
-        GENERATE_MSG(10000, "Stopping simulation at 10 seconds");
-
-        // Define evento ao atingir 10 segundos
-        while (true) {
-          YIELD();
-          if (time > 10000) {
-            log.log("10 seconds reached. Stopping simulation\n");
-            sim.stop();
-            break;
-          }
+        // Aguarda 10 segundos na simulação
+        while (time < 10000) {
+          YIELD(); // Aguarda eventos na simulação
         }
 
-        // Registra conclusão
-        log.log("Simulation stopped successfully\n");
+        log.log("10 seconds reached. Simulation running\n");
 
-        // Finaliza script
-        log.testOK();
+        // Loga informações do tempo simulado e finaliza
+        log.log("Simulation time: " + time + " ms\n");
+        log.testOK(); // Indica sucesso no script
       ]]></script>
     </plugin_config>
   </plugin>
