@@ -61,5 +61,8 @@ apt-get install -y zlib1g:i386
 ls -l /lib/i386-linux-gnu/libz.so.1
 ```
 
+```sh
+java -jar build/libs/cooja.jar --version
+```
 
 

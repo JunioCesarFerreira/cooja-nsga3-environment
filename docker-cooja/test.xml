@@ -2,9 +2,7 @@
 <simconf>
   <project EXPORT="discard">[APPS_DIR]/mrm</project>
   <project EXPORT="discard">[APPS_DIR]/mspsim</project>
-  <project EXPORT="discard">[APPS_DIR]/avrora</project>
   <project EXPORT="discard">[APPS_DIR]/serial_socket</project>
-  <project EXPORT="discard">[APPS_DIR]/collect-view</project>
   <project EXPORT="discard">[APPS_DIR]/powertracker</project>
   <simulation>
     <title>My First simulation</title>
@@ -63,56 +61,34 @@
     </mote>
   </simulation>
   <plugin>
-    se.sics.cooja.plugins.SimControl
-    <width>280</width>
-    <z>1</z>
-    <height>160</height>
-    <location_x>400</location_x>
-    <location_y>0</location_y>
-  </plugin>
-  <plugin>
-    se.sics.cooja.plugins.LogListener
+    org.contikios.cooja.plugins.ScriptRunner
     <plugin_config>
-      <filter />
-      <formatted_time />
-      <coloring />
+      <script><![CDATA[
+        log.log("Initializing simulation script\n");
+
+        // Inicia a simulação
+        sim.start();
+        log.log("Simulation started\n");
+
+        // Aguarda até que o tempo da simulação atinja 10 segundos
+        GENERATE_MSG(10000, "Stopping simulation at 10 seconds");
+
+        // Define evento ao atingir 10 segundos
+        while (true) {
+          YIELD();
+          if (time > 10000) {
+            log.log("10 seconds reached. Stopping simulation\n");
+            sim.stop();
+            break;
+          }
+        }
+
+        // Registra conclusão
+        log.log("Simulation stopped successfully\n");
+
+        // Finaliza script
+        log.testOK();
+      ]]></script>
     </plugin_config>
-    <width>400</width>
-    <z>4</z>
-    <height>240</height>
-    <location_x>400</location_x>
-    <location_y>160</location_y>
-  </plugin>
-  <plugin>
-    se.sics.cooja.plugins.TimeLine
-    <plugin_config>
-      <mote>0</mote>
-      <mote>1</mote>
-      <mote>2</mote>
-      <mote>3</mote>
-      <mote>4</mote>
-      <mote>5</mote>
-      <showRadioRXTX />
-      <showRadioHW />
-      <showLEDs />
-      <zoomfactor>500.0</zoomfactor>
-    </plugin_config>
-    <width>800</width>
-    <z>2</z>
-    <height>166</height>
-    <location_x>0</location_x>
-    <location_y>334</location_y>
-  </plugin>
-  <plugin>
-    se.sics.cooja.plugins.Notes
-    <plugin_config>
-      <notes>Enter notes here</notes>
-      <decorations>true</decorations>
-    </plugin_config>
-    <width>120</width>
-    <z>3</z>
-    <height>160</height>
-    <location_x>680</location_x>
-    <location_y>0</location_y>
   </plugin>
 </simconf>
