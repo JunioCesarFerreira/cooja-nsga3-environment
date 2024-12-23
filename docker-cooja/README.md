@@ -23,3 +23,43 @@ This directory contains a Dockerfile designed for terminal-based testing. Its pu
    This will launch an interactive session where you can execute commands within the container. Once you exit, the container will be automatically removed.
 
 Feel free to modify the Dockerfile or add additional configurations as needed for your simulations.
+
+## Log
+
+*This section contains commands and links used during development.*
+
+```sh
+java -Xms4g -Xmx4g -jar build/libs/cooja.jar --no-gui test.csc
+```
+
+https://medium.com/@mirzaakhi/how-to-install-contikios-and-run-cooja-simulator-on-windows-11-with-oracle-vm-virtualbox-2691fce267af
+
+https://slogix.in/source-code/contiki-cooja-samples-for-IoT/
+
+```sh
+apt-get update
+apt-get install -y software-properties-common
+```
+
+```sh
+apt-get install binutils-msp430 gcc-msp430 msp430-libc mspdebug
+```
+
+https://docs.contiki-ng.org/en/develop/doc/getting-started/Toolchain-installation-on-Linux.html
+
+```sh
+dpkg --add-architecture i386
+apt-get update
+apt-get install -y libc6:i386 libncurses5:i386 libstdc++6:i386
+```
+
+```sh
+apt-get install -y zlib1g:i386
+```
+
+```sh
+ls -l /lib/i386-linux-gnu/libz.so.1
+```
+
+
+
