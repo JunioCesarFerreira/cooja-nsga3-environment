@@ -11,6 +11,7 @@ services:
     ports:
       - "60001:60001"
       - "60002:60002"
+      - "2223:22"
     depends_on:
       - python
 

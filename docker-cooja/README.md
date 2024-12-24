@@ -24,6 +24,8 @@ This directory contains a Dockerfile designed for terminal-based testing. Its pu
 
 Feel free to modify the Dockerfile or add additional configurations as needed for your simulations.
 
+---
+
 ## Log
 
 *This section contains commands and links used during development.*
@@ -64,5 +66,3 @@ ls -l /lib/i386-linux-gnu/libz.so.1
 ```sh
 java -jar build/libs/cooja.jar --version
 ```
-
-
