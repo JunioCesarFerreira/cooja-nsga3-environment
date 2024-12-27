@@ -117,3 +117,8 @@ To set up the environment, you’ll need two essential components:
    ```bash
    ssh user@127.0.0.1 -p 2222
    ```
+
+## 6. [Using the Fetch XML File Script](fetch-csc-file.md)
+
+This Python script connects to a remote host via SSH (using the Paramiko library) and executes the cat command to retrieve the content of a CSC file (Cooja simulation configuration), which is actually an XML-formatted file. It then removes any blank lines from the retrieved content and saves the cleaned data to a local file.
+
