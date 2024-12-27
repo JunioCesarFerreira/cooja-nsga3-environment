@@ -122,3 +122,8 @@ To set up the environment, you’ll need two essential components:
 
 This Python script connects to a remote host via SSH (using the Paramiko library) and executes the cat command to retrieve the content of a CSC file (Cooja simulation configuration), which is actually an XML-formatted file. It then removes any blank lines from the retrieved content and saves the cleaned data to a local file.
 
+## External Links
+
+- [How to install contiki-os and run cooja simulator](https://medium.com/@mirzaakhi/how-to-install-contikios-and-run-cooja-simulator-on-windows-11-with-oracle-vm-virtualbox-2691fce267af)
+
+- [What is RPL and how to simulate it in Cooja](https://zaidmufti.wordpress.com/2016/08/18/what-is-rpl-and-how-to-simulate-it-in-cooja/)

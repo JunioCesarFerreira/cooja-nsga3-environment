@@ -9,6 +9,10 @@ In the current version we have already prepared the [Cooja environment](./simula
 
 Additionally, if you want to explore just the containerized Cooja see [docker-cooja](./docker-cooja).
 
+## Using Cooja with a Virtual Machine (VM)
+
+To use the Cooja GUI and handle simulations, you can set up a Virtual Machine (VM). Learn how to do this [here](./vm/prepare-vm-enviroment.md).
+
 
 ## Contributions
 
