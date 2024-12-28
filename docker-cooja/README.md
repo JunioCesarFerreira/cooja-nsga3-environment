@@ -24,6 +24,8 @@ This directory contains a Dockerfile designed for terminal-based testing. Its pu
 
 Feel free to modify the Dockerfile or add additional configurations as needed for your simulations.
 
+This image can be found on [dockerhub](https://hub.docker.com/r/juniocesarferreira/docker-cooja).
+
 ---
 
 ## Log
