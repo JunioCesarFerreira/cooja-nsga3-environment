@@ -217,24 +217,59 @@
       </mote>
     </motetype>
   </simulation>
-  
   <plugin>
-    org.contikios.cooja.plugins.ScriptRunner
+    org.contikios.cooja.plugins.Visualizer
     <plugin_config>
-      <script><![CDATA[
-        log.log("Initializing simulation script\n");
-
-        // Aguarda 10 segundos na simulação
-        while (time < 10000) {
-          YIELD(); // Aguarda eventos na simulação
-        }
-
-        log.log("10 seconds reached. Simulation running\n");
-
-        // Loga informações do tempo simulado e finaliza
-        log.log("Simulation time: " + time + " ms\n");
-        log.testOK(); // Indica sucesso no script
-      ]]></script>
+      <moterelations>true</moterelations>
+      <skin>org.contikios.cooja.plugins.skins.IDVisualizerSkin</skin>
+      <skin>org.contikios.cooja.plugins.skins.GridVisualizerSkin</skin>
+      <skin>org.contikios.cooja.plugins.skins.TrafficVisualizerSkin</skin>
+      <skin>org.contikios.cooja.plugins.skins.UDGMVisualizerSkin</skin>
+      <viewport>2.466895298198896 0.0 0.0 2.466895298198896 288.47457370470954 255.77614611613242</viewport>
     </plugin_config>
+    <bounds x="1" y="1" height="556" width="635" z="1" />
+  </plugin>
+  <plugin>
+    org.contikios.cooja.plugins.LogListener
+    <plugin_config>
+      <filter />
+      <formatted_time />
+      <coloring />
+    </plugin_config>
+    <bounds x="635" y="160" height="397" width="695" />
+  </plugin>
+  <plugin>
+    org.contikios.cooja.plugins.TimeLine
+    <plugin_config>
+      <mote>0</mote>
+      <mote>1</mote>
+      <mote>2</mote>
+      <mote>3</mote>
+      <mote>4</mote>
+      <mote>5</mote>
+      <mote>6</mote>
+      <mote>7</mote>
+      <mote>8</mote>
+      <mote>9</mote>
+      <mote>10</mote>
+      <mote>11</mote>
+      <mote>12</mote>
+      <mote>13</mote>
+      <mote>14</mote>
+      <mote>15</mote>
+      <showRadioRXTX />
+      <showRadioHW />
+      <showLEDs />
+      <zoomfactor>500.0</zoomfactor>
+    </plugin_config>
+    <bounds x="0" y="557" height="166" width="1330" z="3" />
+  </plugin>
+  <plugin>
+    org.contikios.cooja.plugins.Notes
+    <plugin_config>
+      <notes>Enter notes here</notes>
+      <decorations>true</decorations>
+    </plugin_config>
+    <bounds x="635" y="0" height="160" width="695" z="2" />
   </plugin>
 </simconf>

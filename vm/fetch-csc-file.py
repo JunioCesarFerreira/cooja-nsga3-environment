@@ -67,9 +67,9 @@ def fetch_xml_file_without_blanks(
 # parmeters usage
 HOST = "172.26.96.1"       # If using NAT + port forwarding
 PORT = 2222                # SSH port or forwarded port (e.g., 22 if using Bridged)
-USERNAME = "user"          # VM user
-PASSWORD = "user"          # User's password
-REMOTE_PATH = "/home/user/Desktop/Simulations/simple_udp_rpl.csc"
-LOCAL_PATH = "./simple_udp_rpl.xml"
+USERNAME = "ubuntu"        # VM user
+PASSWORD = "ubuntu"        # User's password
+REMOTE_PATH = "/home/ubuntu/Simulations/simple-rpl-udp.csc"
+LOCAL_PATH = "./simple-rpl-udp.xml"
 
 fetch_xml_file_without_blanks(HOST, PORT, USERNAME, PASSWORD, REMOTE_PATH, LOCAL_PATH)
