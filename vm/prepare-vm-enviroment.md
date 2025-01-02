@@ -169,7 +169,9 @@ To set up the environment, you’ll need two essential components:
      - **Guest Port**: 22
 
 3. **Connect via SSH**:
+   
    Use the following command on the host machine:
+   
    ```bash
    ssh user@127.0.0.1 -p 2222
    ```
