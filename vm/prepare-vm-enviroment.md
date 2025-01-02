@@ -49,56 +49,65 @@ To set up the environment, you’ll need two essential components:
      ```
 
 3. **Prepare the System for Contiki-NG**:
-   - Install required packages, including the MSP430 toolchain:
-     ```bash
-     sudo apt-get install -y build-essential doxygen git git-lfs curl python3-serial srecord rlwrap wget \
-       software-properties-common binutils-msp430 gcc-msp430 msp430-libc mspdebug libc6:i386 libncurses5:i386 libstdc++6:i386 zlib1g:i386
-     ```
+   Install required packages, including the MSP430 toolchain:
+   ```bash
+   sudo apt-get install -y build-essential doxygen git git-lfs curl python3-serial srecord rlwrap wget \
+      software-properties-common binutils-msp430 gcc-msp430 msp430-libc mspdebug libc6:i386 libncurses5:i386 libstdc++6:i386 zlib1g:i386
+   ```
 
 4. **Install MSP430-GCC 4.7.2 (if needed):**
-   - Download and install MSP430-GCC 4.7.2:
-     ```bash
-     wget -nv http://simonduq.github.io/resources/mspgcc-4.7.2-compiled.tar.bz2
-     tar xjf mspgcc-4.7.2-compiled.tar.bz2 -C /tmp/
-     sudo cp -r /tmp/msp430/* /usr/local/
-     rm -rf /tmp/msp430 mspgcc-4.7.2-compiled.tar.bz2
-     ```
+   Download and install MSP430-GCC 4.7.2:
+   ```bash
+   wget -nv http://simonduq.github.io/resources/mspgcc-4.7.2-compiled.tar.bz2
+   tar xjf mspgcc-4.7.2-compiled.tar.bz2 -C /tmp/
+   sudo cp -r /tmp/msp430/* /usr/local/
+   rm -rf /tmp/msp430 mspgcc-4.7.2-compiled.tar.bz2
+   ```
 
 ## 3. Installing Contiki-NG and Cooja
 
 1. **Clone Contiki-NG Repository**:
-   - Open a terminal and run:
-     ```bash
-     git clone --recursive https://github.com/contiki-ng/contiki-ng.git
-     cd contiki-ng/tools/cooja
-     ```
+   Open a terminal and run:
+   ```bash
+   git clone --recursive https://github.com/contiki-ng/contiki-ng.git
+   cd contiki-ng/tools/cooja
+   ```
 
 2. **Build Cooja Simulator**:
-   - Use `gradlew` to build Cooja:
-     ```bash
-     ./gradlew build --no-daemon --stacktrace --info
-     ```
-     The first build might take a few minutes.
+   Use `gradlew` to build Cooja:
+   ```bash
+   ./gradlew build --no-daemon --stacktrace --info
+   ```
+   The first build might take a few minutes.
 
 3. **Test Cooja**:
-   - Launch the simulator:
+   Launch the simulator:
      ```bash
      ./gradlew run
      ```
-   - From the Cooja menu, go to **File** > **New Simulation**, and create a test simulation.
+   From the Cooja menu, go to **File** > **New Simulation**, and create a test simulation.
 
 4. **Create a Desktop Shortcut for Cooja**:
-   - To simplify launching Cooja, create a desktop shortcut:
-     ```bash
-     echo '[Desktop Entry]
-     Version=1.0
-     Type=Application
-     Name=Cooja
-     Exec=/path/to/contiki-ng/tools/cooja/gradlew run
-     Icon=application-x-executable
-     Terminal=false
-     Categories=Development;' > ~/Desktop/Cooja.desktop
-     ```
+   To simplify launching Cooja, create a startup script:
+   ```bash
+   echo '#!/bin/bash
+   cd ~/contiki-ng/tools/cooja
+   ./gradlew run' > ~/contiki-ng/tools/cooja/start-cooja.sh
+   chmod +x ~/contiki-ng/tools/cooja/start-cooja.sh
+   ```
+
+   Then, create a desktop shortcut:
+   ```bash
+   echo '[Desktop Entry]
+   Version=1.0
+   Type=Application
+   Name=Cooja
+   Exec=/home/$USER/contiki-ng/tools/cooja/start-cooja.sh
+   Icon=application-x-executable
+   Terminal=true
+   Categories=Development;' > ~/Desktop/Cooja.desktop
+   chmod +x ~/Desktop/Cooja.desktop
+   ```
    - Replace `/path/to/contiki-ng` with the full path to your Contiki-NG directory.
    - Make the shortcut executable:
      ```bash
